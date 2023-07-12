@@ -36,6 +36,13 @@ function probarValidarDescripcionRegalo() {
   );
 
   console.assert(
+    validarDescripcionRegalo(
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa") === 
+      "ValidarDescripcionRegalo no validó que el nombre sea menor a 100 caracteres",
+      "ValidarDescripcionRegalo no funcionó con un nombre válido "
+  );
+
+  console.assert(
     validarDescripcionRegalo("") === "Este campo no debe estar vacío",
     "ValidarDescripcionRegalo no validó que el campo ciudad no sea vacío"
   );
