@@ -7,7 +7,7 @@ function validarNombre(nombre) {
     return "El nombre debe tener menos de 50 caracteres";
   }
 
-  if (!/^[A-Za-z]+$/.test(nombre)) {
+  if (!/^[A-Za-z]+$/i.test(nombre)) {
     return "El nombre solo admite letras";
   }
   return "";
@@ -55,10 +55,11 @@ function manejarErrores(errores) {
       $form[key].className = "";
     }
   });
+  return cantidadErrores;
 }
 
 const $form = document.querySelector("#carta-a-santa");
-$form.onclick = function (e) {
+$form.onsubmit = function (e) {
   e.preventDefault();
   const $form = document.querySelector("#carta-a-santa");
   const nombre = $form.nombre.value;
@@ -75,5 +76,14 @@ $form.onclick = function (e) {
     "descripcion-regalo": errorDescripcionRegalo,
   };
 
-  manejarErrores(errores);
+  const esExito = manejarErrores(errores) === 0;
+
+  if (esExito) {
+    $form.className = "oculto";
+    $divExito = document.querySelector("#exito");
+    $divExito.className = "";
+    setTimeout(() => {
+      window.open("../wishlist.html");
+    }, 5000);
+  }
 };
