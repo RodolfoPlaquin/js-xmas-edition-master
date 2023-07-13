@@ -80,10 +80,10 @@ $form.onsubmit = function (e) {
 
   if (esExito) {
     $form.className = "oculto";
-    $divExito = document.querySelector("#exito");
-    $divExito.className = "";
+    $divMensajeEnvioExitoso = document.querySelector("#exito");
+    $divMensajeEnvioExitoso.className = "";
     setTimeout(() => {
-      window.open("../wishlist.html");
+      window.location.href = "wishlist.html";
     }, 5000);
   }
 };
